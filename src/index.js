@@ -1,9 +1,12 @@
 const Apify = require('apify');
+const tmp = require("tmp");
+
+const tmpApifyStorage = tmp.dirSync({ unsafeCleanup: true });
 
 var results = [];
 
 // This points to the directory that be used as a working directory for the crawler.
-process.env.APIFY_LOCAL_STORAGE_DIR = "apify_storage";
+process.env.APIFY_LOCAL_STORAGE_DIR = tmpApifyStorage.name;
 
 (async () => {
     // Multiple queues can be created and attached to different crawlers.
@@ -59,6 +62,8 @@ process.env.APIFY_LOCAL_STORAGE_DIR = "apify_storage";
     await crawler.run();
     // Upon completion the results are sorted by their reign start date.
     results = results.sort((a, b) => a.reignStart - b.reignStart);
+    tmpApifyStorage.removeCallback();
+    console.log("Scrape done!");
 })();
 
 require("./webServer")(results);

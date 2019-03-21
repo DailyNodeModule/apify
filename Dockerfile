@@ -6,6 +6,8 @@ ADD package.json /app/package.json
 
 ENV APIFY_LOCAL_STORAGE_DIR /data
 
+VOLUME /data
+
 EXPOSE 3000
 
 RUN npm install
