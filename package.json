@@ -1,0 +1,19 @@
+{
+  "name": "@dailynodemodule/apify",
+  "version": "1.0.0",
+  "description": "This project is a sample project for apify",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dailynodemodule/apify"
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "Zachary Boyd <zachary@dailynodemodule.com>",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "apify": "^0.12.4",
+    "express": "^4.16.4"
+  }
+}
